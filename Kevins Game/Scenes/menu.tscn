@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqg3y66lxqqcf"]
+
+[ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_k6ltd"]
+[ext_resource type="Texture2D" uid="uid://q8q5dnemore8" path="res://Screenshot 2024-09-25 at 12.18.57 PM.jpg" id="2_tdxw8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gylds"]
+texture = ExtResource("2_tdxw8")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k6ltd")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = -603.0
+offset_top = -365.0
+offset_right = 611.0
+offset_bottom = 387.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_gylds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -119.5
+offset_right = 159.0
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Start Game"
+
+[node name="Option" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Option"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

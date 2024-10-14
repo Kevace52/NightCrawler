@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
+# the codes here are for the characters movment, so when the controls are pressed the speed is the movement of the character
 
 @export var speed = 200
 @export var jump_velocity = -300.0
 @export var acceleration : float = 15.0
 @export var jumps = 1
+
 var can_double_jump := true
 
-
+#this enum state is responsible for the characters animation, so when the character isn't moved it's animation is idle.
 enum state {IDLE,RUNNING,JUMPUP,JUMPDOWN,HURT}
 
 var anim_state = state.IDLE
@@ -52,9 +54,9 @@ func update_animation(direction):
 		state.HURT:
 			animation_player.play("Hurt" )
 
-
+#This code is responsible for the double jump of the character
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -69,7 +71,7 @@ func _physics_process(delta: float) -> void:
 			if can_double_jump:
 				velocity.y = -abs(jump_velocity)
 				can_double_jump = false
-
+	
 
 
 
@@ -88,6 +90,12 @@ func _physics_process(delta: float) -> void:
 	update_state()
 	update_animation(direction)
 	move_and_slide()
+ 
 
+#these two codes here are responsible for the water collision, therefore when character falls and collides with water it dies.
 func _on_area_2d_body_entered(body):
 	get_tree().reload_current_scene()
+
+func die() -> void:
+	get_tree().reload_current_scene()
+

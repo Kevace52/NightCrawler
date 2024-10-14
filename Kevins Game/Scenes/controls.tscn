@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfowlc4sw70rv"]
+
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_jhwu5"]
+[ext_resource type="Texture2D" uid="uid://5m566p0w320e" path="res://Screenshot 2024-09-25 at 12.18.57 PM.png" id="2_o52b0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e3ltn"]
+texture = ExtResource("2_o52b0")
+
+[node name="controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jhwu5")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1171.0
+offset_bottom = 662.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_e3ltn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.5
+offset_top = -129.0
+offset_right = 254.5
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "Controls:
+Move Forward - Right Arrow/D Button
+Move Left - Left Arrow/A button
+Jump - Space/Up Arrow
+2x Jump - Double Press Jump Button
+"
+
+[node name="back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "Back
+"
+
+[connection signal="pressed" from="VBoxContainer/back" to="." method="_on_back_pressed"]

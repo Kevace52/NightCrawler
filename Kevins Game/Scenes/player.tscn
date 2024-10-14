@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://slhv1f3jeqrf"]
+[gd_scene load_steps=43 format=3 uid="uid://slhv1f3jeqrf"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_p6b4w"]
 [ext_resource type="Texture2D" uid="uid://ft064j6oot0c" path="res://adventurer-hurt-00.png" id="2_yhewg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://84r1362ohitc" path="res://adventurer-run-03.png" id="14_ufe8n"]
 [ext_resource type="Texture2D" uid="uid://b65nrk86qc1jy" path="res://adventurer-run-04.png" id="15_s1et1"]
 [ext_resource type="Texture2D" uid="uid://2mm08shrvmvo" path="res://adventurer-run-05.png" id="16_a6v47"]
+[ext_resource type="AudioStream" uid="uid://dun7t5mehulaw" path="res://jump_sound.mp3" id="17_3ab62"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kta1o"]
 radius = 12.0
@@ -302,6 +303,11 @@ _data = {
 "Run": SubResource("Animation_rwfkq")
 }
 
+[sub_resource type="Gradient" id="Gradient_vtrm8"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tlbxp"]
+gradient = SubResource("Gradient_vtrm8")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_p6b4w")
 
@@ -320,3 +326,11 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_y6tbi")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-5, -3.5)
+scale = Vector2(0.5, 0.421875)
+texture = SubResource("GradientTexture2D_tlbxp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_3ab62")

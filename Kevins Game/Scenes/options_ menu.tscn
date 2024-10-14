@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://duym4wirns711"]
+
+[ext_resource type="Script" path="res://Scenes/options_ menu.gd" id="1_pe1e5"]
+[ext_resource type="Texture2D" uid="uid://5m566p0w320e" path="res://Screenshot 2024-09-25 at 12.18.57 PM.png" id="2_hisie"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fetvg"]
+texture = ExtResource("2_hisie")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pe1e5")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1204.0
+offset_bottom = 681.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fetvg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -100.5
+offset_right = 136.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Back
+"
+
+[connection signal="pressed" from="VBoxContainer/Control" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control" to="." method="_on_control_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
